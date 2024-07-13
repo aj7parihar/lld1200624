@@ -1,0 +1,31 @@
+package in.aj7parihar.lldoops2200624.lld1class9.producerconsumerproblem;
+
+import java.util.Queue;
+
+public class Producer implements Runnable{
+    private Queue<Object> queue;
+    private String threadName;
+    private int maxSize;
+
+    public Producer(Queue<Object> queue, String threadName, int maxSize) {
+        this.queue = queue;
+        this.threadName = threadName;
+        this.maxSize = maxSize;
+    }
+
+    @Override
+    public void run() {
+        while(true){
+            // Without locking mechanism the size of the queue was increasing beyond maxsize, since multiple
+            // threads were checking the size at the same time and if size was < maxSize then adding
+            // the object to queue simultaneously.
+            if(this.queue.size() < maxSize){
+                System.out.println(this.threadName + ": Adding an element to the queue, size: " + this.queue.size());
+                // As per the output we can figure out that, thread must have been preempted here
+                // and context switch must have happened here so that other switch came in.
+                queue.add(new Object());
+                System.out.println(this.threadName + ": After Adding an element to the queue, size: " + this.queue.size());
+            }
+        }
+    }
+}
