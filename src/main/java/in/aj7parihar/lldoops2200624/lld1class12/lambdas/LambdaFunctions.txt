@@ -1,0 +1,51 @@
+Lambda Functions - Like we had Anonymous Class, similarly we have Lambda Functions.
+
+Lambdas are nothing but anonymous function.
+
+LAMBDA FUNCTION CAN ONLY BE WRITTEN FOR FUNCTIONAL INTERFACE i.e. HAVING SINGLE ABSTRACT METHOD (SAM)
+// Even if the interface is not Functional Interface i.e. normal interface having
+// more than one abstract methods then also we can implement it as Anonymous Class, and in that
+// anonymous class we have to implement all it's methods.
+// Please do not the above statement is not true for Lambda Functions, i.e. they can be
+// implemented only for Functional Interfaces.
+
+Since in Functional Interface we have Single Abstract Method and as we have been using that in Anonymous Class
+way, we can use the same in Anonymous or Lambda function way.
+
+Functional Interface - Anonymous Class Way
+Consumer<String> consumer = new Consumer<String>() {
+          @Override
+          public void accept(String s) {
+              System.out.println(s + " is my Country " + " - Implementation of Consumer Interface as Anonymous Class");
+          }
+        };
+consumer.accept("India");
+
+Functional Interface - Anonymous or Lambda Function Way
+Consumer<String> consumer = (str) -> {
+          System.out.println(str + " is my Country " + " - Implementation of Consumer Interface as Anonymous Class");
+        };
+consumer.accept("India");
+
+
+// COMPARABLE - When sorting on the basis of just one field then use compareTo() method of Comparable Interface.
+// This is also a Functional Interface i.e. only one abstract method i.e. compareTo();
+// What about, when we have to make comparison/sort on the basis of multiple fields
+Example -
+class Student{
+    String name;
+    int rollNum;
+    int marks;
+}
+Now if we only had to compare/sort just on the basis of either name, rollNum or marks then Comparable was
+sufficient, but if we have to make comparison/sort on the basis of all name, marks and rollNum then we will
+use COMPARATOR INTERFACE.
+
+// COMPARATOR INTERFACE - This is also a functional Interface
+Syntax -
+Comparator<Student or ClassName> marksComparator/objRefName = (st1, st2){
+    return st1.marks - st2.marks;
+};
+Collections.sort(studentList, marksComparator);
+
+

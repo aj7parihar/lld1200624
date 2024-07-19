@@ -1,0 +1,37 @@
+/*
+Let's say if we want to implement a method of any functional interface JUST ONCE, so till now
+we were doing like:
+public class XYZ implements Runnable{
+    void run(){
+        // some operation/implementation
+    }
+}
+
+And executing that from main() method -
+public class Client{
+    psvm{
+        XYZ xyz = new XYZ();
+        xyz.run()
+    }
+}
+ Is this feasible, if we have to use the "run()" just ONCE?
+ -- BIG NO.
+
+Hence, to overcome this trouble of creating a separate class for implementing just one method
+Java provides us ANONYMOUS CLASS.
+We can implement this directly in our Client class as below:
+Runnable runnable = new Runnable(){
+    void run(){
+        // Our implementation
+    }
+}
+runnable.run();
+
+And since we are not creating any class for this rather directly defining the interface hence it is called
+ANONYMOUS CLASS.
+
+// Even if the interface is not Functional Interface i.e. normal interface having
+// more than one abstract methods then also we can implement it as Anonymous Class, and in that
+// anonymous class we have to implement all it's methods.
+// Please do not the above statement is not true for Lambda Functions, i.e. they can be
+// implemented only for Functional Interfaces.

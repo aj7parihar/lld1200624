@@ -1,0 +1,83 @@
+// Functional Interface -
+// It is an interface with single abstract method (SAM) only.
+// It can have other methods too but only one Abstract method.
+// Abstract means it does not have the implementation/body, we do not need to explicitly write
+// "abstract" to make it abstract.
+// Introduced in Java 8, 2014.
+
+// Annotation - @FunctionalInterface
+// If we have defined a functional interface i.e. with SAM,
+// then it is good to annotate it with @FunctionalInterface (which is always optional),
+// because let's say if tomorrow someone comes and write another abstract method in it
+// then it won't be a functional interface anymore
+// and at run time the use of functional interface wil throw error.
+// Also after adding this annotation we can restrict any other abstract method to be added inside
+// this interface, it will give compilation error.
+
+// Examples of Functional Interfaces we have used till now are Runnable (run()), Callable (call()) &
+// Comparable (compareTo()).
+
+// If the behaviours/methods in Interface is not "default" or in Interface/Abstract class
+// it's implementation is not provided then we can say that they are Abstract Methods.
+
+// More examples of Functional Interfaces are (learn and implement them on your own) -
+// Iterable
+// Iterator
+// Comparator
+
+// Consumer & BiConsumer -
+// Visualize them as a Generic class & Method, it is just that we are not creating instead Java provides them.
+
+// @FunctionalInterface
+/* public interface Consumer<T>{
+	void accept(T t);
+}
+
+// @FunctionalInterface
+public interface BiConsumer<T, V>{
+	void accept(T t, V v);
+}
+*/
+
+
+// Predicate & BiPredicate -
+// Visualize them as a Generic class & Method, it is just that we are not creating instead Java provides them.
+
+// @FunctionalInterface
+/* public interface Predicate<T>{
+	Boolean test(T t);
+}
+
+// @FunctionalInterface
+public interface BiPredicate<T, V>{
+	Boolean test(T t, V v);
+}
+*/
+
+
+
+// Function & BiFunction -
+// Visualize them as a Generic class & Method, it is just that we are not creating instead Java provides them.
+
+// @FunctionalInterface
+/* public interface Function<T, R>{
+	R apply(T t);
+}
+
+// @FunctionalInterface
+public interface BiFunction<T, V, R>{
+	R apply(T t, V v);
+}
+*/
+
+// Why can't we create object of an interface or abstract class?
+// Java does not allow us to create and instantiate the object of an interface or abstract class
+// because the interface and abstract in general will have methods without body/implementation,
+// WHICH IS INCOMPLETE, hence Java doesn't allow us to create an object of them.
+// This is also the reason that the language (any) does not provide Interfaces and Abstract classes
+// a default constructor, because they are incomplete.
+// For example - We have just defined the blueprint of our house i.e. house plan,
+// so just on the basis of blueprint can we construct  the house?
+// NO, similarly, here interfaces and abstract classes are just the blueprint/design,
+// and does not have any implementation of its own, rather they are implemented by classes
+// that implements or extends them.

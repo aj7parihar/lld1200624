@@ -1,0 +1,67 @@
+Streams - Means Flow
+- It transforms the data from the data source (such as list, map, files, any Data Structure) into stream of data,
+which will seem that data is flowing IN.
+
+- It is kind of Wrapper on data sources.
+
+# Ways to create Stream -
+
+1. Creating Stream from the data source
+List<Integer> nums = Arrays.asList(1,2,3,4,5,6,7);
+Stream<Integer> stream1 = nums.stream();
+
+List<String> list = Arrays.asList("a", "b", "c");
+Stream<String> stream2 = list.stream();
+
+String[] array = {"a", "b", "c"};
+Stream<String> stream3 = Arrays.stream(array);
+
+
+2. Directly creating Stream when we know the data
+Stream<Integer> stream4 = Stream.of(1,2,3,4,5);
+
+Stream<String> stream5 = Stream.of("a", "b", "c");
+
+
+3. Creating Stream from Builder
+Stream.Builder<Integer> stream6 = Stream.builder();
+stream6.add(1);
+stream6.add(2);
+stream6.add(3);
+stream6.add(4);
+
+Stream<String> stream7 = Stream.<String>builder()
+    .add("a")
+    .add("b")
+    .add("c")
+    .build();
+
+Que: Program to extract odd numbers from the list
+
+Normal way without Java Streams API -
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<Integer> oddNumbers = new ArrayList<>();
+
+        for (Integer number : numbers) {
+            if (number % 2 != 0) {
+                oddNumbers.add(number);
+            }
+        }
+
+Using Java Streams API -
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10); // Create list of numbers
+
+        // Use Streams to filter odd numbers
+        List<Integer> oddNumbers = numbers.stream() // This line will transform the data from data source (list)
+                                           // into Streams
+                                          .filter(n -> n % 2 != 0) // filter method with a lambda function n -> n % 2 != 0
+                                          // to keep only odd numbers.
+                                          // filter() takes Predicate as input, if filter() returns "true" then it
+                                          // is collected by collect() method and converted toList() by Collectors.
+                                          .collect(Collectors.toList()); // Collect the filtered stream
+                                          // into a new list using collect(Collectors.toList()).
+
+        OR this can be also written as -
+        Stream<Integer> stream1 = numbers.stream().filter(//give predicate functional interface here// n-> n%2 != 0);
+        List<Integer> oddNumbers = stream1.toList();
+
