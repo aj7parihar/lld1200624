@@ -1,0 +1,96 @@
+Exceptions -
+--> Unwanted or Unusual behaviour like medical conditions, wifi issues, etc.
+--> In terms of s/w exceptions
+    - can be file format mismatch exception while reading a file
+    - File not found in specified path or wrong path provided
+    - Permission exception
+    - File corrupted (HD issue or pen drive removed)
+    - Input mismatch exception, expected int got String
+    - Null pointer exception, scanner obj ref is null
+    - Divide by zero, Arithmetic Exception
+
+--> Wherever there is exception in the program/code, it will crash or terminate abruptly.
+--> Hence we do exception handling so that it doesn't end abruptly.
+
+--> It is not possible to catch or handle 100% exceptions, gradually we will add exceptions
+    to our code as we come across them.
+
+# Keywords associated with exception & exception handling -
+--> try -
+    We put our code/program that can throw the exception in try block
+
+--> catch -
+    Code that handles exception is written in catch block
+
+--> finally -
+    // Code that will always be executed
+    This is written after 'try' & 'catch' blocks and gets executed
+    regardless of whether an exception was thrown or caught.
+
+    Use case for 'finally'? - This can be useful for performing clean-up actions,
+    such as closing files or releasing resources or other housekeeping tasks,
+    that need to be executed no matter what happens in the try and catch blocks.
+
+# Types of Exceptions -
+1. Checked Exception (aka Compile Time Exception) -
+
+2. Unchecked Exception (aka Run Time Exception) -
+
+# Hierarchy of Exceptions -
+                                        Throwable (class)
+                     Exceptions(class)                            Error(class)
+                                                                   OutOfMemory Error - Heap Memory is exhausted
+        CompileTime            RunTimeExceptions(class)            StackOverFlow Error - Recursive fn call did not stop
+        FileNotFoundException   InputMismatchException
+        SQLException            ArithmeticException
+                                NullPointerException
+
+--> Checked (Compile Time) exceptions directly inherit from Exceptions class.
+ex - public class ProductNotFound extends Exception{
+}
+
+--> Unchecked (Run Time) inherit from RunTimeException class.
+ex - public class ProductNotFound extends RunTimeException{
+}
+
+--> Error - Kind of problem/event from which our app can't recover.
+          - No way to handle this at app run time.
+
+
+# THROW vs THROWS
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        demoFileException();
+        demoArithmeticException(new Scanner(System.in));
+    }
+
+    public static void demoFileException() throws FileNotFoundException, IOException {
+        File file = new File("abc.txt");
+        if (!file.exists()) {
+            throw new FileNotFoundException();
+        }
+        FileReader fileReader = new FileReader(file);
+        fileReader.read();
+        // Here we are seeing the exception before running it as compared to exceptions in
+        // demoArithmeticException method, this is because some exceptions occurs at run time
+        // and some at compile time.
+    }
+
+throws - is used in the method signature to represent what all exceptions can be thrown by a method.
+throw - is used to throw an exception EXPLICITLY i.e. if I am not catching the exceptions then only throw it.
+
+# Which is better approach 'try' 'catch' or throw (explicitly)??
+-->
+
+# Difference b/w 'final', 'finally', 'finalize()' - DO IT??
+
+final -
+attribute - remains constant and cannot be changed.
+method - cannot override a method if it is declared final.
+class - cannot extends a class if it is declared final.
+
+finally -
+for exceptions
+
+finalize() - (destructor in C++)
+If we want then we can use it explicitly otherwise garbage collector will take care of it.
+
