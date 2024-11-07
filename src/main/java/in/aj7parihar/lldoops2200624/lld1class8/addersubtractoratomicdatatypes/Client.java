@@ -26,7 +26,7 @@ public class Client {
         // and in real case we join all the threads only when all of them have already started.
         thread2.join();
 
-        System.out.println(count.value.get());
+        System.out.println(count.value.get()); // since "value" is of AtomicInteger type hence using get() at last
         // Below problem (was in lld1class7) is resolved using Atomic Data Types - AtomicInteger
         // the output above is unpredictable i.e. everytime a new value is displayed hence this is
         // a problem and solutions to this we will discuss in Synchronization class.

@@ -77,8 +77,8 @@ ex - public class ProductNotFound extends RunTimeException{
 
 throws - is used in the method signature to represent what all exceptions can be thrown by a method.
 throw - is used to throw an exception EXPLICITLY i.e. if I am not catching the exceptions then only throw it.
-
 # Which is better approach 'try' 'catch' or throw (explicitly)??
+
 -->
 
 # Difference b/w 'final', 'finally', 'finalize()' - DO IT??

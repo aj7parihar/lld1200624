@@ -4,10 +4,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Count{
     // Java implicitly provides Atomic Data Types (ADT) .
-    // If we use Atomic Data Types then locks are not needed to make threads synchronized or .
+    // If we use Atomic Data Types then locks are not needed to make threads safe or synchronized.
     // ADT internally take locks.
 
-    // In our case we are using AtomicInteger as one of the ADT
+    // In our case we are using AtomicInteger which is one of the ADT
     AtomicInteger value = new AtomicInteger(0); // it is a counter
 
     // Que - Shall we use the Atomic Data Types all the time?
